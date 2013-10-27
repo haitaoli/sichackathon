@@ -145,6 +145,8 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 	Thread serverThread = null;
 	public static final int SERVERPORT = 4000;  // Port Number should match that in TagMe app which is a remote tag app by Bob
 	
+	private boolean sitting;
+	
 	////
     LocationListener locationListener = new LocationListener() {
         @Override
@@ -919,11 +921,20 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 	    			Long millis = Long.parseLong(rows[0].trim());
 	    			
 	    			Integer[] sensors = new Integer[3];
+	    			Boolean s = false;
 	    			
 	    			for (int i = 0; i < 3; i++) {
 	    				if ((i < 2) || (rows.length > 3)) {
 	    					sensors[i] = Integer.parseInt(rows[i + 1].trim());
+	    					if (sensors[i] > 500)
+	    						s = true;
 	    				}
+	    			}
+	    			
+	    			if (s != sitting) {
+		    			ImageView statusImageView = (ImageView) findViewById(R.id.statusImageView);
+	    				statusImageView.setImageResource(s ? R.drawable.sit: R.drawable.stand);
+	    				sitting = s;
 	    			}
 	    			
                     mSampleCount++;
