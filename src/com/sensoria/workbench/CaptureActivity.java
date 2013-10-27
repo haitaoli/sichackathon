@@ -147,6 +147,9 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 	
 	private boolean sitting;
 	
+	//rest client talk to M2X
+	private static RestClient restClient = new RestClient();
+	
 	////
     LocationListener locationListener = new LocationListener() {
         @Override
@@ -922,14 +925,19 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 	    			
 	    			Integer[] sensors = new Integer[3];
 	    			Boolean s = false;
+	    			int pressure = 0;
 	    			
 	    			for (int i = 0; i < 3; i++) {
 	    				if ((i < 2) || (rows.length > 3)) {
 	    					sensors[i] = Integer.parseInt(rows[i + 1].trim());
-	    					if (sensors[i] > 500)
+	    					if (sensors[i] > 500) {
 	    						s = true;
+	    						pressure = 1;
+	    					}
 	    				}
 	    			}
+	    			
+	    			restClient.httpPush(pressure);
 	    			
 	    			if (s != sitting) {
 		    			ImageView statusImageView = (ImageView) findViewById(R.id.statusImageView);
