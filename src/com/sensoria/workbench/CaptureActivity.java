@@ -933,11 +933,11 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 	    					if (sensors[i] > 500) {
 	    						s = true;
 	    						pressure = 1;
+	    		    			restClient.httpPush(pressure);
 	    					}
 	    				}
 	    			}
 	    			
-	    			restClient.httpPush(pressure);
 	    			
 	    			if (s != sitting) {
 		    			ImageView statusImageView = (ImageView) findViewById(R.id.statusImageView);
@@ -946,6 +946,10 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 	    			}
 	    			
                     mSampleCount++;
+                    //only send 1 out 50
+                    if(mSampleCount % 50 == 0)
+                    	restClient.httpPush(pressure);
+                    
 	    			// Only plot 1 out of 5 samples
 	    			if (mSampleCount % 5 == 0) {
 	    				//Reset graph every minute
