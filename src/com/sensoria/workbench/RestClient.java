@@ -21,7 +21,7 @@ public class RestClient {
 		this.strStream = "pressure1";
 	}
 	
-	public String httpPull(){
+	public int httpPull(){
 		try {
 				//URL url = new URL("http://localhost:8080/RESTfulExample/json/product/get");
 				//tstClient.httpGet("http://api-m2x.att.com/v1/feeds/cee72cc686706df9965ce8abc821caff/streams/load_1m/values");
@@ -41,19 +41,29 @@ public class RestClient {
 					(conn.getInputStream())));
 		 
 				String output;
+				String result = "";
 				System.out.println("Output from Server .... \n");
 				while ((output = br.readLine()) != null) {
+					result += output;
 					System.out.println(output);
-				}		 
+				}		
+				//System.out.println(result);
+				//JSONObject jsonObj = new JSONObject(output);
+				String[] tokens = result.split(",");
+				String[] resTokens = tokens[2].split(":");
+				resTokens = resTokens[1].split("\"");
+				
+				//System.out.println("value:" + resTokens[1]);
 				conn.disconnect();
-				return output;
+				return Integer.parseInt(resTokens[1]);
+				
 		} catch (MalformedURLException e) {		 
 				e.printStackTrace();	
-				return "MalformedURLException";
+				return 0;
 		} catch (IOException e) {		 
 				e.printStackTrace();
-				return "IOException";				
-		}
+				return 0;				
+		} 
 	}
 	
 	public void httpPush(int value){
@@ -103,11 +113,12 @@ public class RestClient {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		RestClient tstClient = new RestClient();
-		tstClient.httpPull();
+		int val = tstClient.httpPull();
+		System.out.println(val);
 		//strValue = "20";
 		//strJson = "{\"value\":\"iPad 4\"}";
-		for(int i = 1; i <= 100; i++)
-			tstClient.httpPush(i);
+		//for(int i = 1; i <= 100; i++)
+			//tstClient.httpPush(0);
 	}
 
 }
