@@ -25,7 +25,7 @@ public class RestClient {
 		try {
 				//URL url = new URL("http://localhost:8080/RESTfulExample/json/product/get");
 				//tstClient.httpGet("http://api-m2x.att.com/v1/feeds/cee72cc686706df9965ce8abc821caff/streams/load_1m/values");
-				String urlStr = "http://api-m2x.att.com/v1/feeds/" + strFeed + "/streams/" + strStream + "/values";
+				String urlStr = "http://api-m2x.att.com/v1/feeds/" + strFeed + "/streams/" + strStream;
 			    URL url = new URL(urlStr);
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestMethod("GET");
