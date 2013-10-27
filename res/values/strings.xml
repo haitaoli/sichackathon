@@ -1,0 +1,74 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Activity titles -->
+    <string name="activity_title_device">Device Settings</string>
+    <string name="activity_title_dataview">Data Capture View</string>
+    <string name="activity_title_capture">Capture View</string>
+    
+    <!-- Main Activity  -->
+    <string name="app_name">Sensoria Workbench</string>
+    <string name="app_action_menu_device">Device</string>
+    <string name="status_no_device">NO DEVICE SELECTED\n\nTap on the device icon to select a paired device.</string>
+    <string name="status_yes_device" formatted="false">DEVICE SELECTED:\n%s</string> 
+    <string name="edit_prefix">&lt;insert file prefix here&gt;</string>
+    
+    <string-array name="tabs_main_activity">
+	    <item>Capture Data</item>
+	    <item>View Data</item>
+    </string-array>
+    
+    <!--  DeviceActivity -->
+    <string name="title_current_device">Current Device</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="title_paired_devices">Paired Devices</string>
+    
+    <!-- CaptureActivity -->
+    <string name="bt_bluetooth_not_available">Bluetooth is not available</string>
+    <string name="bt_bluetooth_not_enabled">Bluetooth not enabled</string>
+    <string name="bt_device_not_specified">No device address available</string>
+    <string name="storage_unable_to_write">Cannot write to external nor internal storage, data will not be stored</string>    
+    <string name="title_connecting">connecting&#8230;</string>
+    <string name="title_connected_to">connected to <xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="title_not_connected">not connected</string>
+    <string name="button_pause_capture">pause</string>
+    <string name="button_resume_capture">resume</string>
+    <string name="button_toggle_graph">graph</string>
+    <string name="button_new_capture">new</string>
+    
+    <!-- DataViewActivity -->
+   	<string-array name="list_sample_capture">
+	    <item>Sample Capture File 1</item>
+	    <item>Sample Capture File 2</item>
+	    <item>Sample Capture File 3</item>
+	    <item>Sample Capture File 4</item>
+	    <item>Sample Capture File 5</item>
+	    <item>Sample Capture File 6</item>
+		<item>Sample Capture File 7</item>
+	    <item>Sample Capture File 8</item>
+	    <item>Sample Capture File 9</item>
+	    <item>Sample Capture File 10</item>
+	    <item>Sample Capture File 11</item>
+	    <item>Sample Capture File 12</item>	    
+    </string-array>
+    <string name="warning_alert_title">Warning</string>
+    <string name="delete_file_confirmation">Do you want to delete </string>
+    <string name="yes_answer">Yes</string>
+    <string name="no_answer">No</string>
+    <string name="ok_answer">Ok</string>
+    <string name="not_implemented_yet">Not implemented yet.</string>
+    <string name="finished_alert_title">Done</string>
+    <string name="finished_upload_text">Finished uploading the file.</string>
+    
+    <string name="BobStepCountTextView">COB #</string>
+    <string name="BobView">0</string>
+    <string name="FrancoStepCountTextView">MA #</string>
+    <string name="FrancoView">0</string>
+    <string name="COBTextView">COB</string>
+    <string name="COBView">C</string>
+    <string name="TagTextView">Tag</string>
+    <string name="TagNum">-</string>
+    
+    <string name="accel_x">Ax</string>
+    <string name="accel_y">Ay</string>
+    <string name="accel_z">Az</string>
+</resources>

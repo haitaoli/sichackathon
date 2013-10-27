@@ -1,0 +1,345 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.sensoria.workbench"
+	android:id="@+id/activity_capture"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingRight="5dp">
+		
+		<LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="250dip"
+			android:orientation="horizontal"
+			android:id="@+id/capture_graph" />
+		
+			<GridLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:columnCount="1"
+			    android:rowCount="1"
+			    android:id="@+id/capture_foot">  
+ 
+				<com.sensoria.workbench.FootPressureMap 
+				    android:id="@+id/foot_canvas"
+					android:layout_row="0"
+				    android:layout_column="0"
+				    android:layout_marginTop="10dp"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content" />
+			</GridLayout>
+			
+			<GridLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:columnCount="8"
+			    android:rowCount="1"
+			    android:id="@+id/step_counters">  
+ 
+			     <TextView
+			        android:id="@+id/BobStepCountView"
+			        android:layout_width="wrap_content"
+			        android:layout_column="0"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/BobStepCountTextView" />
+			    
+			     
+			     <TextView
+			        android:id="@+id/BobView"
+			        android:layout_width="46dp"
+			        android:layout_column="1"
+			        android:padding="10dp"
+			        android:layout_gravity="right|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/BobView" />	
+
+			     <TextView
+			        android:id="@+id/FrancoStepCountView"
+			        android:layout_width="wrap_content"
+			        android:layout_column="2"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/FrancoStepCountTextView" />
+			    
+			     
+				  <TextView
+			        android:id="@+id/FrancoView"
+			        android:layout_width="46dp"
+			        android:padding="10dp"
+			        android:layout_column="3"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/FrancoView" />
+				  
+				  <TextView
+			        android:id="@+id/COBTextView"
+			        android:layout_width="wrap_content"
+			        android:layout_column="4"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/COBTextView" />
+			    
+			     
+				  <TextView
+			        android:id="@+id/COBView"
+			        android:layout_width="46dp"
+			        android:padding="10dp"
+			        android:layout_column="5"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/COBView" />
+				  
+				<TextView
+			        android:id="@+id/TagTextView"
+			        android:layout_width="wrap_content"
+			        android:layout_column="6"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/TagTextView" />
+			    
+			     
+				  <TextView
+			        android:id="@+id/TagNum"
+			        android:layout_width="46dp"
+			        android:padding="10dp"
+			        android:layout_column="7"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/TagNum" />
+			    
+			</GridLayout>
+			
+			<GridLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:columnCount="9"
+			    android:rowCount="1"
+			    android:id="@+id/accelerometer">  
+ 
+			     <TextView
+			         android:id="@+id/accel_x_label"
+			         android:layout_width="wrap_content"			         
+			         android:layout_column="0"
+			         android:layout_gravity="left|center_vertical"
+			         android:layout_row="0"
+			         android:text="@string/accel_x" />
+			     
+			     <TextView
+			         android:id="@+id/accel_x"
+			         android:layout_width="84dp"
+			         android:layout_column="1"
+			         android:layout_columnSpan="2"
+			         android:layout_gravity="left|center_vertical"
+			         android:layout_row="0"
+			         android:padding="10dp"
+			         android:text="0" />
+
+		         <TextView
+			        android:id="@+id/accel_y_label"
+			        android:layout_width="wrap_content"
+			        android:layout_column="3"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/accel_y" />			    
+			     
+			     <TextView
+			         android:id="@+id/accel_y"
+			         android:layout_width="84dp"
+			         android:layout_column="4"
+			         android:layout_columnSpan="2"
+			         android:layout_gravity="right|center_vertical"
+			         android:layout_row="0"
+			         android:padding="10dp"
+			         android:text="0" />
+
+			     <TextView
+			        android:id="@+id/accel_z_label"
+			        android:layout_width="wrap_content"
+			        android:layout_column="6"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_row="0"
+			        android:text="@string/accel_z" />			    
+			     
+			     <TextView
+			         android:id="@+id/accel_z"
+			         android:layout_width="wrap_content"
+			         android:layout_column="7"
+			         android:layout_columnSpan="2"
+			         android:layout_gravity="fill_horizontal|center_vertical"
+			         android:layout_row="0"
+			         android:padding="10dp"
+			         android:text="0" />
+			     			    
+			</GridLayout>
+			
+			<GridLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:columnCount="2"
+			    android:rowCount="1"
+			    android:id="@+id/capture_foot2">  
+		  		    
+			    <Button
+		            android:id="@+id/button_foot_swap"
+		            android:layout_width="154dp"
+		            android:layout_height="80dp"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_column="0"
+		            android:layout_row="0"		            
+		            android:drawableLeft="@drawable/ic_swap"
+		            android:text="Swap feet" />
+			    
+	   			<Button
+		            android:id="@+id/button_foot_calibrate"
+		            android:layout_width="154dp"
+		            android:layout_height="80dp"
+		        	android:layout_gravity="right|center_vertical"
+		            android:layout_column="1"
+		            android:layout_row="0"
+		            android:text="Calibrate"
+		            android:drawableLeft="@drawable/ic_calibrate" />			
+		    </GridLayout>
+		    
+		<LinearLayout
+		    android:id="@+id/capture_panel"
+		    android:layout_width="fill_parent"
+		    android:layout_height="250dip"
+		    android:orientation="vertical">
+		 			
+			<GridLayout   
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:columnCount="4"
+			    android:rowCount="1">
+			    <Button
+			        android:id="@+id/button_toggle_graph"
+			        android:layout_width="wrap_content"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_column="0"
+			        android:layout_row="0"
+			        android:drawableLeft="@drawable/ic_graph" />
+
+			    <Button
+			        android:id="@+id/button_toggle_foot"
+			        android:layout_width="wrap_content"
+			        android:layout_gravity="left|center_vertical"
+			        android:layout_column="1"
+			        android:layout_row="0"
+			        android:drawableLeft="@drawable/ic_foot" />
+			    
+		        <Button
+		            android:id="@+id/button_pause_resume_capture"
+		            android:layout_column="2"
+		            android:layout_gravity="left|center_vertical"
+		            android:layout_row="0"
+		            android:drawableLeft="@drawable/ic_pause" />
+
+		        <Button
+		            android:id="@+id/button_new_capture"
+		            android:layout_height="73dp"
+		            android:layout_column="3"
+		            android:layout_gravity="left|center_vertical"
+		            android:layout_row="0"
+		            android:drawableLeft="@drawable/ic_new" />
+	        </GridLayout>
+	        
+			<TextView
+			    android:id="@+id/text_current_tag"
+			   	android:textStyle="bold"
+		    	android:padding="5dp"
+		    	android:layout_marginTop="10dp"
+		    	android:text="Current Tag: [none]"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content" />
+	
+			<GridLayout   
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:columnCount="4"
+			    android:rowCount="3">
+			    
+			    <Button android:id="@+id/button_sit_tag"
+		            android:text="Sit"
+                    android:textSize="14dp"
+		            android:layout_gravity="fill_vertical|fill_horizontal"
+		            android:layout_row="0"
+		            android:layout_column="0"
+		             />
+			    
+				<Button android:id="@+id/button_stand_tag"
+		            android:text="Stand"
+                    android:textSize="14dp"
+		            android:layout_gravity="fill_vertical|fill_horizontal"
+		            android:layout_row="0"
+		            android:layout_column="1" />
+	
+				<Button android:id="@+id/button_walk_tag"
+		            android:text="Walk"
+                    android:textSize="14dp"
+		            android:layout_gravity="fill_vertical|fill_horizontal"
+		            android:layout_row="0"
+		            android:layout_column="2" />
+
+				<Button android:id="@+id/button_run_tag"
+		            android:text="Run"
+                    android:textSize="14dp"
+		            android:layout_gravity="fill_vertical|fill_horizontal"
+		            android:layout_row="0"
+		            android:layout_column="3" />
+
+                <Button android:id="@+id/button_jump_tag"
+                        android:text="Jump"
+                        android:textSize="14dp"
+                        android:layout_gravity="fill_vertical|fill_horizontal"
+                        android:layout_row="1"
+                        android:layout_column="1" />
+
+                <Button android:id="@+id/button_bicyle_tag"
+                        android:text="Bicycle"
+                        android:textSize="14dp"
+                        android:layout_gravity="fill_vertical|fill_horizontal"
+                        android:layout_row="1"
+                        android:layout_column="2" />
+
+                <Button android:id="@+id/button_squat_tag"
+                        android:text="Squat"
+                        android:textSize="14dp"
+                        android:layout_gravity="fill_vertical|fill_horizontal"
+                        android:layout_row="1"
+                        android:layout_column="3" />
+                
+                <Button android:id="@+id/button_none_tag"
+                        android:text="None"
+                        android:textSize="14dp"
+                        android:layout_gravity="fill_vertical|fill_horizontal"
+                        android:layout_row="1"
+                        android:layout_column="0" />
+
+				<Button android:id="@+id/button_elliptical_tag"
+                        android:text="Elliptical"
+                        android:textSize="14dp"
+                        android:layout_gravity="fill_vertical|fill_horizontal"
+                        android:layout_row="2"
+                        android:layout_column="0" />
+                
+                <Button android:id="@+id/button_step_down_tag"
+                        android:text="Step Dn"
+                        android:textSize="14dp"
+                        android:layout_gravity="fill_vertical|fill_horizontal"
+                        android:layout_row="2"
+                        android:layout_column="1" />
+                
+                <Button android:id="@+id/button_step_up_tag"
+                        android:text="Step Up"
+                        android:textSize="14dp"
+                        android:layout_gravity="fill_vertical|fill_horizontal"
+                        android:layout_row="2"
+                        android:layout_column="2" />
+			</GridLayout> 
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>

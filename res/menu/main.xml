@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+  
+    <item android:id="@+id/app_action_menu_device"
+          android:icon="@drawable/ic_anklet"
+          android:title="@string/app_action_menu_device"
+          android:showAsAction="ifRoom|withText" />
+
+</menu>

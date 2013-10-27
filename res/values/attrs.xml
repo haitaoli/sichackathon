@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <declare-styleable name="FootPressureMap">
+       <attr name="heelLowCap" format="integer" />
+       <attr name="heelHighCap" format="integer" />
+       <attr name="mtb1LowCap" format="integer" />
+       <attr name="mtb1HighCap" format="integer" />
+       <attr name="mtb5LowCap" format="integer" />
+       <attr name="mtb5HighCap" format="integer" />
+       <attr name="foot" format="enum">
+           <enum name="left" value="0" />
+           <enum name="right" value="0" />
+       </attr>
+       <attr name="heelValue" format="integer" />
+       <attr name="mtb1Value" format="integer" />
+       <attr name="mtb5Value" format="integer" />
+   </declare-styleable>
+</resources>
