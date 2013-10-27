@@ -61,6 +61,7 @@ import java.util.Queue;
 import java.util.Random;
 
 import com.sensoria.workbench.FootPressureMap;
+import com.sensoria.workbench.*;
 
 import com.sensoria.signal.SharedObject;
 import com.sensoria.signal.SMAQueue;
@@ -145,8 +146,9 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 	Thread serverThread = null;
 	public static final int SERVERPORT = 4000;  // Port Number should match that in TagMe app which is a remote tag app by Bob
 	
-	private boolean sitting;
-	
+	private float sittingTime;
+	private boolean showingWorkoutActivity;
+
 	//rest client talk to M2X
 	private static RestClient restClient = new RestClient();
 	
@@ -332,7 +334,11 @@ public class CaptureActivity extends Activity implements SensorEventListener {
         View toggleGraphButton = findViewById(R.id.button_toggle_graph);        
         toggleGraphButton.setOnClickListener(new View.OnClickListener() {		
 				@Override
-				public void onClick(View v) {									
+				public void onClick(View v) {
+		            Intent intent = new Intent(CaptureActivity.this, WorkoutActivity.class);
+		            startActivity(intent);
+
+					/*
 					if (mIsGraphVisible) {
 						turnOffGraphPanel();
 					} else {
@@ -341,6 +347,7 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 							turnOffFootPanel();
 						}
 					}
+					*/
 				}
 			});
         
@@ -799,7 +806,10 @@ public class CaptureActivity extends Activity implements SensorEventListener {
     public synchronized void onResume() {
         super.onResume();
 
-        // Performing this check in onResume() covers the case in which BT was
+		sittingTime = 0;
+		showingWorkoutActivity = false;
+
+		// Performing this check in onResume() covers the case in which BT was
         // not enabled during onStart(), so we were paused to enable it...
         // onResume() will be called when ACTION_REQUEST_ENABLE activity returns.
         if (mBluetoothService != null) {
@@ -933,23 +943,39 @@ public class CaptureActivity extends Activity implements SensorEventListener {
 	    					if (sensors[i] > 500) {
 	    						s = true;
 	    						pressure = 1;
-	    		    			restClient.httpPush(pressure);
 	    					}
 	    				}
 	    			}
 	    			
-	    			
-	    			if (s != sitting) {
-		    			ImageView statusImageView = (ImageView) findViewById(R.id.statusImageView);
-	    				statusImageView.setImageResource(s ? R.drawable.sit: R.drawable.stand);
-	    				sitting = s;
+	    			// restClient.httpPush(pressure);
+
+	    			ImageView statusImageView = (ImageView) findViewById(R.id.statusImageView);
+	    			if (s) {
+	    				if (sittingTime == 0) {
+	    					statusImageView.setImageResource(s ? R.drawable.sit: R.drawable.stand);
+	    				}
+	    				
+	    				sittingTime += 1.0;
+	    				
+	    				if (sittingTime > 100 && !showingWorkoutActivity) {
+	    					showingWorkoutActivity = true;
+	    		            Intent intent = new Intent(CaptureActivity.this, WorkoutActivity.class);
+	    		            startActivity(intent);
+	    				}
+	    			} else {
+	    				if (sittingTime > 0) {
+	    					statusImageView.setImageResource(s ? R.drawable.sit: R.drawable.stand);
+	    				}
+	    				
+	    				sittingTime = 0;
 	    			}
 	    			
                     mSampleCount++;
                     //only send 1 out 50
+                    /*
                     if(mSampleCount % 50 == 0)
                     	restClient.httpPush(pressure);
-                    
+                    */
 	    			// Only plot 1 out of 5 samples
 	    			if (mSampleCount % 5 == 0) {
 	    				//Reset graph every minute

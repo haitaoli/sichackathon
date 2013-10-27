@@ -79,6 +79,7 @@ public class RestClient {
 		 
 				//String input = "{\"qty\":100,\"name\":\"iPad 4\"}"; //  the json string format
 				String input = "{\"value\":" + String.valueOf(value) + "}";
+				System.out.println("myinput:" + input);
 		 
 				OutputStream os = conn.getOutputStream();
 				os.write(input.getBytes());

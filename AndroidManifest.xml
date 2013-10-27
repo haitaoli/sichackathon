@@ -60,5 +60,15 @@
                 android:value="com.sensoria.workbench.MainActivity" />
         </activity>
         	
-    </application>
+       	<activity
+            android:name="com.sensoria.workbench.WorkoutActivity"
+            android:label="@string/activity_title_capture"
+            android:configChanges="keyboardHidden|screenSize" 
+            android:parentActivityName="com.sensoria.workbench.WorkoutActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sensoria.workbench.MainActivity" />
+        </activity>
+       	
+       	</application>
 </manifest>
